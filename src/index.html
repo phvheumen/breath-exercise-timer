@@ -4,50 +4,66 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>Breathing Exercise Timer</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
 <body>
 
-  <div class="row">
-    <div class="col">
-      <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="customRange1">
+  <div class="container-sm pt-5">
+    <div class="row">
+      <div class="col-sm-10">
+        <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="sliderBreathIn">
+      </div>
+      <div class="col-sm-2">
+        <input type="number" class="form-control" id="inputBreathIn" value="5">
+      </div>
     </div>
-    <div class="col-auto">
-      <input type="number" class="form-control" id="exampleFormControlInput1" value="5">
+
+    <div class="row">
+      <div class="col-sm-10">
+        <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="sliderBreathOut">
+      </div>
+      <div class="col-sm-2">
+        <input type="number" class="form-control" id="inputBreathOut" value="5">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-10">
+        <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="sliderBreathHold">
+      </div>
+      <div class="col-sm-2">
+        <input type="number" class="form-control" id="inputBreathHold" value="5">
+      </div>
+    </div>
+
+    <div class="row mb-3 mt-3">
+      <label for="inputIncrementCycle" class="col-form-label">Cycles per increment</label>
+      <input type="number" class="form-control" id="inputIncrementCycle" value="1">
+    </div>
+    <div class="row mb-3 mt-3">
+      <label for="inputIncrementInterval" class="form-label">Increment time</label>
+      <input type="number" class="form-control" id="inputIncrementInterval" value="1">
+    </div>
+
+    <div class="row mb-3 mt-3">
+      <button type="button" class="btn btn-primary" id="buttonStart">Start</button>
+    </div>
+
+    <div class="row mb-3 mt-3">
+      <div class="col-sm-4 offset-sm-4">
+        <h1 class="text-center" id="timerCountDown">0:00</h1>
+      </div>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col">
-      <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="customRange1">
-    </div>
-    <div class="col-auto">
-      <input type="number" class="form-control" id="exampleFormControlInput1" value="5">
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col">
-      <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="customRange1">
-    </div>
-    <div class="col-auto">
-      <input type="number" class="form-control" id="exampleFormControlInput1" value="5">
-    </div>
-  </div>
-
-  <div class="d-grid gap-2 d-md-block">
-    <button type="button" class="btn btn-primary">Primary</button>
-  </div>
-
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
