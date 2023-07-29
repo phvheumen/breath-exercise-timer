@@ -1,0 +1,19 @@
+{
+  "name": "breathtimer",
+  "version": "0.1.0",
+  "description": "Configurable timer for breating exercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phvheumen/breathtimer.git"
+  },
+  "author": "Pasquale van Heumen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phvheumen/breathtimer/issues"
+  },
+  "homepage": "https://github.com/phvheumen/breathtimer#readme"
+}
