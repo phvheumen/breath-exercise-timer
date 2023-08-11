@@ -12,29 +12,36 @@ const buttonStart = document.getElementById('buttonStart');
 const textInputCycleIncrement = document.getElementById('inputIncrementCycle');
 const textInputIncerementInterval = document.getElementById('inputIncrementInterval');
 
-// TODO(phvheumen): search for events that allow more fluid synchronization
-textInputIn.addEventListener('change', function () {
-  rangeInputIn.value = this.value;
+function zeroFalsey(val) {
+  if (!val) {
+    return '0';
+  }
+
+  return String(val);
+}
+
+textInputIn.addEventListener('input', (event) => {
+  rangeInputIn.value = zeroFalsey(event.target.value);
 });
 
-rangeInputIn.addEventListener('change', function () {
-  textInputIn.value = this.value;
+rangeInputIn.addEventListener('input', (event) => {
+  textInputIn.value = zeroFalsey(event.target.value);
 });
 
-textInputOut.addEventListener('change', function () {
-  rangeInputOut.value = this.value;
+textInputOut.addEventListener('input', (event) => {
+  rangeInputOut.value = zeroFalsey(event.target.value);
 });
 
-rangeInputOut.addEventListener('change', function () {
-  textInputOut.value = this.value;
+rangeInputOut.addEventListener('input', (event) => {
+  textInputOut.value = zeroFalsey(event.target.value);
 });
 
-textInputHold.addEventListener('change', function () {
-  rangeInputHold.value = this.value;
+textInputHold.addEventListener('input', (event) => {
+  rangeInputHold.value = zeroFalsey(event.target.value);
 });
 
-rangeInputHold.addEventListener('change', function () {
-  textInputHold.value = this.value;
+rangeInputHold.addEventListener('input', (event) => {
+  textInputHold.value = zeroFalsey(event.target.value);
 });
 
 const audio = {
