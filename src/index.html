@@ -11,8 +11,8 @@
 
 <body>
 
-  <div class="container-sm pt-5">
-    <div class="row">
+  <div class="container mt-5 w-75">
+    <div class="row mb-3">
       <div class="col-sm-10">
         <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="sliderBreathIn">
       </div>
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-sm-10">
         <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="sliderBreathOut">
       </div>
@@ -30,8 +30,7 @@
       </div>
     </div>
 
-
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-sm-10">
         <input type="range" class="form-range" min="0" max="30" step="1" value="5" id="sliderBreathHold">
       </div>
@@ -40,20 +39,30 @@
       </div>
     </div>
 
-    <div class="row mb-3 mt-3">
-      <label for="inputIncrementCycle" class="col-form-label">Cycles per increment</label>
-      <input type="number" class="form-control" id="inputIncrementCycle" value="1">
-    </div>
-    <div class="row mb-3 mt-3">
-      <label for="inputIncrementInterval" class="form-label">Increment time</label>
-      <input type="number" class="form-control" id="inputIncrementInterval" value="1">
+    <div class="form-check mb-5">
+      <input class="form-check-input" type="checkbox" value="" id="lockIntervalsCheck">
+      <label class="form-check-label" for="lockIntervalsCheck">Lock intervals</label>
     </div>
 
-    <div class="row mb-3 mt-3">
+    <div class="mb-3">
+      <div class="col-sm-3">
+        <label for="inputIncrementCycle" class="form-label">Cycles per increment</label>
+        <input type="number" class="form-control" id="inputIncrementCycle" value="1">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="col-sm-3">
+        <label for="inputIncrementInterval" class="form-label">Increment time</label>
+        <input type="number" class="form-control" id="inputIncrementInterval" value="1">
+      </div>
+    </div>
+
+    <div class="mb-3">
       <button type="button" class="btn btn-primary" id="buttonStart">Start</button>
     </div>
 
-    <div class="row mb-3 mt-3">
+    <div class="row mb-3">
       <div class="col-sm-4 offset-sm-4">
         <h1 class="text-center" id="timerCountDown">0:00</h1>
       </div>
