@@ -1,3 +1,16 @@
+var gContext = {
+  timerInterval: {
+    in: "5",
+    out: "5",
+    hold: "5",
+    lock: false,
+  },
+  timerIncrement: {
+    cyclesPerIncrement: "0",
+    incrementTime: "0",
+  },
+};
+
 function getAssetsLocation() {
   return `${window.location.href}/assets/`.replace("index.html", "");
 }
@@ -68,7 +81,6 @@ const lockInput = {
   registerCoupleOnLock(elem: HTMLInputElement) {
     elem.addEventListener("input", this.inputEventHandler.bind(this, elem));
   },
-
 };
 
 lockInput.registerClickEventHandler(getInputElementById("lockIntervalsCheck"));
@@ -78,8 +90,8 @@ lockInput.registerDisableOnLock([
   getInputElementById("sliderBreathHold"),
   getInputElementById("inputBreathHold"),
 ]);
-lockInput.registerCoupleOnLock(getInputElementById("inputBreathIn"))
-lockInput.registerCoupleOnLock(getInputElementById("sliderBreathIn"))
+lockInput.registerCoupleOnLock(getInputElementById("inputBreathIn"));
+lockInput.registerCoupleOnLock(getInputElementById("sliderBreathIn"));
 
 const audio = {
   sectionOneAudioSrc: `${getAssetsLocation()}/audio/section_1.mp3`,
@@ -256,6 +268,7 @@ buttonStart.addEventListener("click", function () {
       Number(getInputElementById("inputBreathHold").value) * 1000,
     ]);
     timer.start();
+    saveValues();
     this.textContent = "Stop";
   } else {
     anim.stop();
@@ -264,3 +277,52 @@ buttonStart.addEventListener("click", function () {
     this.textContent = "Start";
   }
 });
+
+function restoreValues() {
+  getInputElementById("inputBreathIn").value = gContext.timerInterval.in;
+  getInputElementById("inputBreathOut").value = gContext.timerInterval.out;
+  getInputElementById("inputBreathHold").value = gContext.timerInterval.hold;
+  getInputElementById("sliderBreathIn").value = gContext.timerInterval.in;
+  getInputElementById("sliderBreathOut").value = gContext.timerInterval.out;
+  getInputElementById("sliderBreathHold").value = gContext.timerInterval.hold;
+  if (gContext.timerInterval.lock) {
+    getInputElementById("lockIntervalsCheck").click();
+  }
+
+  getInputElementById("inputIncrementInterval").value =
+    gContext.timerIncrement.incrementTime;
+  getInputElementById("inputIncrementCycle").value =
+    gContext.timerIncrement.cyclesPerIncrement;
+}
+
+function saveValues() {
+  gContext.timerInterval.in = getInputElementById("inputBreathIn").value;
+  gContext.timerInterval.out = getInputElementById("inputBreathOut").value;
+  gContext.timerInterval.hold = getInputElementById("inputBreathHold").value;
+  gContext.timerInterval.lock =
+    getInputElementById("lockIntervalsCheck").checked;
+
+  gContext.timerIncrement.incrementTime = getInputElementById(
+    "inputIncrementInterval"
+  ).value;
+  gContext.timerIncrement.cyclesPerIncrement = getInputElementById(
+    "inputIncrementCycle"
+  ).value;
+
+  window.localStorage.setItem("context", JSON.stringify(gContext));
+}
+
+function onDOMContentLoaded() {
+  var context = window.localStorage.getItem("context");
+  if (context === null) {
+    window.localStorage.setItem("context", JSON.stringify(gContext));
+  }
+  gContext = JSON.parse(context);
+  restoreValues();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+} else {
+  onDOMContentLoaded();
+}
